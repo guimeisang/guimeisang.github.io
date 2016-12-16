@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: guimei的博客
+title: guimeisang的博客
 subtitle: 和平认真，真诚待人
 description: 湖南大学10级，就职于晓教育。擅长前端各种技能，致力于做一个优秀产品
-author: guimei
+author: guimeisang
 language: 
 timezone:
 keywords: "前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验"
@@ -89,7 +89,7 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/guimeisang/guimeisang.github.io.git
+  repo: git@github.com:guimeisang/guimeisang.github.io.git
   branch: master
 
 sitemap:
