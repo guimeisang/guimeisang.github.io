@@ -6,6 +6,8 @@ tags: component
 ### 先看效果
 ![image](http://oi9n0t0p1.bkt.clouddn.com/dropdown.png)
 
+<!-- more -->
+
 ### HTML
 ```
  <label class="self_label_class common_label_class"></label>

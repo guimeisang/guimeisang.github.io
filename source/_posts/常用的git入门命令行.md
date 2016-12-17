@@ -15,6 +15,8 @@ tags: git cli
 
 **本文只是针对git初级用户，这不包括完全小白，如果是完全明白，基本上是可以覆盖所有的普通的操作！**
 
+<!-- more -->
+
 ![image](https://github.com/guimeisang/git/blob/master/img/git%E5%85%A5%E9%97%A8%E5%9F%BA%E6%9C%AC%E5%9B%BE.jpg)
 
 ## 一、git clone
