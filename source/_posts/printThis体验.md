@@ -3,7 +3,7 @@ title: printThis体验
 date: 2017-04-18 10:18:48
 tags: jQuery插件 
 ---
-> jQuery pringting plugin; print specific elements on a page; \
+> jQuery pringting plugin; print specific elements on a page; 
 > 自定义打印的jQuery插件
 
 <!--more-->
