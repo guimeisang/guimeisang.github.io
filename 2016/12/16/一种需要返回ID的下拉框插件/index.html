@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://guimeisang.github.io">
+  <title>一种需要返回ID的下拉框插件 | guimeisang的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="先看效果">
+<meta name="keywords" content="component">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一种需要返回ID的下拉框插件">
+<meta property="og:url" content="https://guimeisang.github.io/2016/12/16/一种需要返回ID的下拉框插件/index.html">
+<meta property="og:site_name" content="guimeisang的博客">
+<meta property="og:description" content="先看效果">
+<meta property="og:image" content="http://oi9n0t0p1.bkt.clouddn.com/dropdown.png">
+<meta property="og:updated_time" content="2017-08-05T09:11:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一种需要返回ID的下拉框插件">
+<meta name="twitter:description" content="先看效果">
+<meta name="twitter:image" content="http://oi9n0t0p1.bkt.clouddn.com/dropdown.png">
+  
+    <link rel="alternative" href="/atom.xml" title="guimeisang的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/assets/img/logo.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/assets/img/guimeiImg.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">guimeisang</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">和平认真，真诚待人</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/phones">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/guimeisang" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2954853535" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">guimeisang</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/assets/img/guimeiImg.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">guimeisang</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">和平认真，真诚待人</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/phones">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/guimeisang" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2954853535" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-一种需要返回ID的下拉框插件" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一种需要返回ID的下拉框插件
+    </h1>
+  
+
+        <a href="/2016/12/16/一种需要返回ID的下拉框插件/" class="archive-article-date">
+  	<time datetime="2016-12-16T03:59:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-16</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="先看效果"><a href="#先看效果" class="headerlink" title="先看效果"></a>先看效果</h3><p><img src="http://oi9n0t0p1.bkt.clouddn.com/dropdown.png" alt="image"></p>
+<a id="more"></a>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;label class=&quot;self_label_class common_label_class&quot;&gt;&lt;/label&gt;</div><div class="line">&lt;ul class=&quot;self_ul_class common_ul_class&quot; style=&quot;display:none;&quot;&gt;&lt;/ul&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;script src=&quot;./custom/component/component.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;./custom/component/dropDown.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;./custom/component/demo.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.common_label_class&#123;display:inline-block;width:270px;line-height:42px;height:42px;overflow:hidden;font-size:14px;color:#5a5a5a;border:1px solid #e3e3ed;padding:0px 24px 0px 14px;margin-right:8px;background: url(&quot;.&quot;) 278px center no-repeat;&#125;</div><div class="line">.common_label_class:hover&#123;background: url(&quot;.&quot;) 278px center no-repeat;border:1px solid #98bd31;&#125;</div><div class="line">.common_label_class.active&#123;background: url(&quot;.&quot;) 278px center no-repeat !important;border:1px solid #98bd31 !important;&#125;</div><div class="line">.common_ul_class&#123;position: absolute;width:310px;left:-32px;margin-top:-3px;background:#fff;max-height:297px;overflow-y: auto;&#125;</div><div class="line">.common_ul_class li&#123;font-size:12px;color:#666;padding:0px 14px;line-height:32px;border-bottom:1px solid #cdcdd1;border-left:1px solid #cdcdd1;border-right:1px solid #cdcdd1;background:#fff;cursor: pointer;&#125;</div><div class="line">.common_ul_class li:hover&#123;background:#f0f0f6;&#125;</div></pre></td></tr></table></figure>
+<h3 id="demo-js"><a href="#demo-js" class="headerlink" title="demo.js"></a>demo.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">var typeId = null;//这是点击之后返回的值</div><div class="line">var options = &#123;</div><div class="line">    self_label_class:&apos;self_label_class&apos;,</div><div class="line">    self_ul_class:&apos;self_ul_class&apos;,</div><div class="line">    common_label_class:&apos;common_label_class&apos;,</div><div class="line">    common_ul_class:&apos;common_ul_class&apos;,</div><div class="line">    defaultTxt:&quot;这里写选择框里的内容&quot;,</div><div class="line">    id:&quot;code&quot;,</div><div class="line">    name:&quot;codeValue&quot;,</div><div class="line">    list_data:[ &#123;</div><div class="line">        &quot;code&quot; : 1,</div><div class="line">        &quot;codeValue&quot; : &quot;易错题&quot;</div><div class="line">        &#125;,&#123;</div><div class="line">        &quot;code&quot; : 2,</div><div class="line">        &quot;codeValue&quot; : &quot;典型题&quot;</div><div class="line">        &#125;, &#123;</div><div class="line">        &quot;code&quot; : 3,</div><div class="line">        &quot;codeValue&quot; : &quot;其他&quot;</div><div class="line">    &#125;],</div><div class="line">    callback:function(currentLiId)&#123;</div><div class="line">        typeId = currentLiId;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">custComponent.dropDown.init(options);</div></pre></td></tr></table></figure>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line">// dropDown.js</div><div class="line">(function(CustomComponent)&#123;</div><div class="line">    var newLi,_ul,currentLi,currentLiId;</div><div class="line"></div><div class="line">    //初始化组件dom</div><div class="line">    function _init(options)&#123;</div><div class="line">        var name = options.name,</div><div class="line">            id = options.id,</div><div class="line">            list_data = options.list_data,</div><div class="line">            callback = options.callback,</div><div class="line">            defaultTxt = options.defaultTxt,</div><div class="line">            self_label_class = options.self_label_class,</div><div class="line">            self_ul_class = options.self_ul_class,</div><div class="line">            common_label_class = options.common_label_class,</div><div class="line">            common_ul_class = options.common_ul_class,</div><div class="line">            node_label = document.getElementsByClassName(self_label_class)[0],</div><div class="line">            node_ul = document.getElementsByClassName(self_ul_class)[0],</div><div class="line">            all_node_label = document.getElementsByClassName(common_label_class),</div><div class="line">            all_node_ul = document.getElementsByClassName(common_ul_class);</div><div class="line">        node_label.innerHTML = defaultTxt;</div><div class="line">        for(var i=0;i&lt;list_data.length;i++)&#123;</div><div class="line">            newLi = document.createElement(&apos;li&apos;);</div><div class="line">            newLi.innerHTML = list_data[i][name];</div><div class="line">            newLi.setAttribute(&quot;objId&quot;,list_data[i][id]);</div><div class="line">            newLi.setAttribute(&quot;class&quot;,&quot;dropDown-content-li&quot;);</div><div class="line">            node_ul.appendChild(newLi);</div><div class="line">        &#125;</div><div class="line">        _UlBingClick(node_label,node_ul);</div><div class="line">        _LiBingClick(node_label,node_ul,options,callback);</div><div class="line">        _closeAllDropDown(all_node_label,all_node_ul);</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    //点击label显示ul</div><div class="line">    function _UlBingClick(node_label,node_ul)&#123;</div><div class="line">        node_label.onclick = function(event)&#123;</div><div class="line">            if(node_ul.style.display==&quot;block&quot;)&#123;</div><div class="line">                node_ul.style.display=&quot;none&quot;;</div><div class="line">            &#125;else&#123;</div><div class="line">                node_ul.style.display=&quot;block&quot;;</div><div class="line">            &#125;</div><div class="line">            if(event&amp;&amp;event.stopPropagation)&#123;</div><div class="line">                event.stopPropagation();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //点击li并且传值过去</div><div class="line">    function _LiBingClick(node_label,node_ul,options,callback)&#123;</div><div class="line">        node_ul.onclick = function(event)&#123;</div><div class="line">            currentLi = event.target;</div><div class="line">            if(currentLi.className == &quot;dropDown-content-li&quot;)&#123;</div><div class="line">                _currentLiId = currentLi.getAttribute(&apos;objId&apos;);</div><div class="line">                node_label.innerHTML = currentLi.innerHTML;</div><div class="line">                if(node_label.innerHTML!= options.defaultTxt)&#123;</div><div class="line">                    var _className = options.self_label_class +&quot; &quot; + options.common_label_class+&quot; &quot; + &quot;active&quot;;</div><div class="line">                    node_label.setAttribute(&apos;class&apos;,_className);</div><div class="line">                &#125;else&#123;</div><div class="line">                    var _className = options.self_label_class +&quot; &quot; + options.common_label_class;</div><div class="line">                    node_label.setAttribute(&apos;class&apos;,_className);</div><div class="line">                &#125;</div><div class="line">                node_ul.style.display=&quot;none&quot;;</div><div class="line">                callback(_currentLiId);</div><div class="line">                if(event&amp;&amp;event.stopPropagation)&#123;</div><div class="line">                    event.stopPropagation();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    //如果不是点击在ul或者label上则隐藏掉</div><div class="line">    function _closeAllDropDown(all_node_label,all_node_ul)&#123;</div><div class="line">        document.onclick = function(event)&#123;</div><div class="line">            for(var i = 0 ; i &lt; all_node_label.length ;i++)&#123;</div><div class="line">                if(event.target==all_node_ul[i]||event.target!=all_node_label[i])&#123;</div><div class="line">                    all_node_ul[i].style.display=&quot;none&quot;;</div><div class="line">                &#125;else&#123;</div><div class="line">                    all_node_ul[i].style.display=&quot;block&quot;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //开放出去</div><div class="line">    CustomComponent.prototype.dropDown=&#123;</div><div class="line">        init:_init</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">&#125;)(CustomComponent)</div><div class="line"></div><div class="line">//component.js</div><div class="line">function Customponent()&#123;&#125;</div><div class="line">var  custComponent=new Customponent();</div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixingpay1.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/component/">component</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://guimeisang.github.io/2016/12/16/一种需要返回ID的下拉框插件/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/12/18/周日学做菜/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          周日学做菜
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/16/常用的git入门命令行/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">常用的git入门命令行</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/12/16/一种需要返回ID的下拉框插件/" data-title="一种需要返回ID的下拉框插件" data-url="https://guimeisang.github.io/2016/12/16/一种需要返回ID的下拉框插件/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 guimeisang
+    	</div>
+      	<div class="footer-right">
+          <span id="busuanzi_container_site_pv">
+              guimeisang博客总访问量<span id="busuanzi_value_site_pv"></span>次
+              当前页阅读量<span id="busuanzi_value_page_pv"></span>次
+          </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">angular 1.3 父子通信技术总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">前端和UI合作规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">前后端分离问题总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">editor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs 批量修改图片名称</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">location 环境配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">jQuery插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">2017自白</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">js小效果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">component</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ueditor二次开发，ueditor自定义plugins和execCommand方法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ueditor二次开发 自定义事件event</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">周末生活系列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ES6 require import 模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">移动端 调试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ueditor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">dialog</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://litten.me/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>litten</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.ui.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>UI</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.layui.com/demo/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>components</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">guimeisang &lt;br&gt;毕业于湖南大学 &lt;br&gt;前端开发，只想过着自己想过的生活 &lt;br&gt;年轻无为，卖马为生。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

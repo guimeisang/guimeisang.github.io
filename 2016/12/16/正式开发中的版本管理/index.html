@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://guimeisang.github.io">
+  <title>正式开发中的版本管理 | guimeisang的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Git分支管理 在正式开发中，以下会就几个比较典型的情况进行详细指导  详细如下：版本的分支(branch)和合并（merge）是否方便。有代码的物理拷贝。但是git只生成一个指向当前版本的指针(header)；这个就是得git很方便但是这个好处会带来一些不便之处：就是你不加注意的话，很有可能会留下一个枝节曼生/四处开放的版本库。到处都是分支的脉络。下面有一种策略，它可以使得版本库演进保持简洁，主">
+<meta name="keywords" content="git cli">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正式开发中的版本管理">
+<meta property="og:url" content="https://guimeisang.github.io/2016/12/16/正式开发中的版本管理/index.html">
+<meta property="og:site_name" content="guimeisang的博客">
+<meta property="og:description" content="Git分支管理 在正式开发中，以下会就几个比较典型的情况进行详细指导  详细如下：版本的分支(branch)和合并（merge）是否方便。有代码的物理拷贝。但是git只生成一个指向当前版本的指针(header)；这个就是得git很方便但是这个好处会带来一些不便之处：就是你不加注意的话，很有可能会留下一个枝节曼生/四处开放的版本库。到处都是分支的脉络。下面有一种策略，它可以使得版本库演进保持简洁，主">
+<meta property="og:image" content="https://github.com/guimeisang/git/blob/master/img/bg1.png">
+<meta property="og:image" content="https://github.com/guimeisang/git/blob/master/img/bg2.png">
+<meta property="og:image" content="https://github.com/guimeisang/git/blob/master/img/bg3.png">
+<meta property="og:image" content="https://github.com/guimeisang/git/blob/master/img/bg4.png">
+<meta property="og:image" content="https://github.com/guimeisang/git/blob/master/img/bg5.png">
+<meta property="og:image" content="https://github.com/guimeisang/git/blob/master/img/bg6.png">
+<meta property="og:updated_time" content="2017-08-05T09:11:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正式开发中的版本管理">
+<meta name="twitter:description" content="Git分支管理 在正式开发中，以下会就几个比较典型的情况进行详细指导  详细如下：版本的分支(branch)和合并（merge）是否方便。有代码的物理拷贝。但是git只生成一个指向当前版本的指针(header)；这个就是得git很方便但是这个好处会带来一些不便之处：就是你不加注意的话，很有可能会留下一个枝节曼生/四处开放的版本库。到处都是分支的脉络。下面有一种策略，它可以使得版本库演进保持简洁，主">
+<meta name="twitter:image" content="https://github.com/guimeisang/git/blob/master/img/bg1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="guimeisang的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/assets/img/logo.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/assets/img/guimeiImg.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">guimeisang</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">和平认真，真诚待人</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/phones">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/guimeisang" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2954853535" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">guimeisang</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/assets/img/guimeiImg.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">guimeisang</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">和平认真，真诚待人</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/phones">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/guimeisang" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2954853535" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-正式开发中的版本管理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      正式开发中的版本管理
+    </h1>
+  
+
+        <a href="/2016/12/16/正式开发中的版本管理/" class="archive-article-date">
+  	<time datetime="2016-12-16T01:56:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-16</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git分支管理"><a href="#Git分支管理" class="headerlink" title="Git分支管理"></a>Git分支管理</h1><blockquote>
+<p>在正式开发中，以下会就几个比较典型的情况进行详细指导</p>
+</blockquote>
+<p>详细如下：<br>版本的分支(branch)和合并（merge）是否方便。有代码的物理拷贝。但是git只生成一个指向当前版本的指针(header)；这个就是得git很方便<br>但是这个好处会带来一些不便之处：就是你不加注意的话，很有可能会留下一个枝节曼生/四处开放的版本库。到处都是分支的脉络。<br>下面有一种策略，它可以使得版本库演进保持简洁，主干清晰，各分支清晰各司其职，井井有条。</p>
+<a id="more"></a>
+<p>##　一、主分支Master<br>首先，代码库应该有一个，且有一个主分支。所有提供用户使用的正式版本，都在这个主分支上面发布。<br><img src="https://github.com/guimeisang/git/blob/master/img/bg1.png" alt="image"></p>
+<p>Git主分支的名字，默认叫做Master，它是自动建立的。版本库初始化以后，默认就是在主干上面开发。</p>
+<h2 id="二、开发分支dev"><a href="#二、开发分支dev" class="headerlink" title="二、开发分支dev"></a>二、开发分支dev</h2><p>主分支主要是用来分布重大版本，日常开发应该在另一条分支上面完成的。我们把开发叫做dev<br><img src="https://github.com/guimeisang/git/blob/master/img/bg2.png" alt="image"></p>
+<p>这个分支可以用来生成代码的最新隔夜版本(nightly)。如果是想正式对外发布，就在Master分支上，把master分之合并到dev（此时dev已经提前几个commit了）</p>
+<ul>
+<li>Git创建dev分支<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b dev master</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后你就在dev上面，写你的代码，写完之后，git add &lt;你的文件&gt; → git commit -m “记录” → git push。开发完之后<br>将dev分支发布到Master分支的命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 切换到Master分支</div><div class="line">git checkout master</div><div class="line"># 对Develop分支进行合并（--no-ff参数代表着:Git执行&quot;快进式合并&quot;（fast-farward merge），会直接将Master分支指向Develop分支）</div><div class="line">git merge --no-ff dev -m &quot;将master分支merge到dev上去&quot;</div></pre></td></tr></table></figure></p>
+<p>在master分支上面merge完之后，还需要，对merge的文件进行 git commit和git push 命令！</p>
+<p> <img src="https://github.com/guimeisang/git/blob/master/img/bg3.png" alt="image"></p>
+<p> 使用–no-ff参数后，会执行正常合并，在Master分支上生成一个新节点。为了保证版本演进的清晰，我们希望采用这种做法。关于合并的更多解释，请参考Benjamin Sandofsky的<br> <a href="http://sandofsky.com/blog/git-workflow.html" target="_blank" rel="external">《Understanding the Git Workflow》</a></p>
+<p>  <img src="https://github.com/guimeisang/git/blob/master/img/bg4.png" alt="image"></p>
+<h2 id="三、临时性分支"><a href="#三、临时性分支" class="headerlink" title="三、临时性分支"></a>三、临时性分支</h2><p>前面讲到版本库的两条主要分支：Master和Develop。前者用于正式发布，后者用于日常开发。其实，常设分支只需要这两条就够了，不需要其他了。</p>
+<p>但是，除了常设分支以外，还有一些临时性分支，用于应对一些特定目的的版本开发。临时性分支主要有三种：</p>
+<ul>
+<li>功能（feature）分支</li>
+<li>预发布（release）分支</li>
+<li>修补bug（fixbug）分支<br><strong>这三种分支都属于临时性需要，使用完以后，应该删除，使得代码库的常设分支始终只有Master和Develop。</strong></li>
+</ul>
+<h2 id="四、-功能分支"><a href="#四、-功能分支" class="headerlink" title="四、 功能分支"></a>四、 功能分支</h2><p>接下来，一个个来看这三种”临时性分支”。<br>第一种是功能分支，它是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要再并入Develop。<br> <img src="https://github.com/guimeisang/git/blob/master/img/bg5.png" alt="image"></p>
+<p>功能分支的名字，可以采用feature-*的形式命名。<br>创建一个功能分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b feature-x develop</div></pre></td></tr></table></figure></p>
+<p>在feature-x分支上开发完成后()，将功能分支合并到develop分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout develop</div><div class="line">git merge --no-ff feature-x</div></pre></td></tr></table></figure></p>
+<p>merge之后再dev分支上，git commit 和git push 将最新的文件push上去。<br>删除feature分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d feature-x</div></pre></td></tr></table></figure></p>
+<h2 id="预发布分支"><a href="#预发布分支" class="headerlink" title="预发布分支"></a>预发布分支</h2><p>第二种是预发布分支，它是指发布正式版本之前（即合并到Master分支之前），我们可能需要有一个预发布的版本进行测试。<br>预发布分支是从Develop分支上面分出来的，预发布结束以后，必须合并进Develop和Master分支。它的命名，可以采用release-*的形式。</p>
+<p>创建一个预发布分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b release-1.2 develop</div></pre></td></tr></table></figure></p>
+<p>确认没有问题后，合并到master分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">git merge --no-ff release-1.2</div><div class="line"># 对合并生成的新节点，做一个标签</div><div class="line">git tag -a 1.2</div></pre></td></tr></table></figure></p>
+<p>再合并到develop分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">　git checkout develop</div><div class="line">　git merge --no-ff release-1.2</div></pre></td></tr></table></figure></p>
+<p>记得在master和dev上面，将更新的文件commmit和push上去<br>最后，删除预发布分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d release-1.2</div></pre></td></tr></table></figure></p>
+<p>##　六、修补bug分支<br>最后一种是修补bug分支。软件正式发布以后，难免会出现bug。这时就需要创建一个分支，进行bug修补。<br>修补bug分支是从Master分支上面分出来的。修补结束以后，再合并进Master和Develop分支。它的命名，可以采用fixbug-*的形式。</p>
+<p> <img src="https://github.com/guimeisang/git/blob/master/img/bg6.png" alt="image"></p>
+<p> 创建一个修补bug分支：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b fixbug-0.1 master</div></pre></td></tr></table></figure></p>
+<p> 修补结束后，合并到master分支：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">git merge --no-ff fixbug-0.1</div><div class="line">git tag -a 0.1.1</div></pre></td></tr></table></figure></p>
+<p> 再合并到develop分支：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout develop</div><div class="line">git merge --no-ff fixbug-0.1</div></pre></td></tr></table></figure></p>
+<p> 最后，删除”修补bug分支”：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d fixbug-0.1</div></pre></td></tr></table></figure></p>
+<p> (完)</p>
+<h2 id="七、重命名远程分支"><a href="#七、重命名远程分支" class="headerlink" title="七、重命名远程分支"></a>七、重命名远程分支</h2><p> 在开发中，我们需要管理好自己的分支。<br> 有一种场景就是本来在dev分支进行开发的，但是为了区别版本号，需要将dev改成v1.2.0版本<br> 解决的思路就是：先删除远程的分支，然后重命名本地分支，再重新提交一个远程分支。</p>
+<ol>
+<li>先查一下所以的分支<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ git branch -av</div><div class="line">* dev                           c38c6b2 异步加载，缓存 commit</div><div class="line">  master                        b70dd0f 有问题的文件上传做个提示...</div><div class="line">  remotes/origin/HEAD           -&gt; origin/master</div><div class="line">  remotes/origin/dev            c38c6b2 异步加载，缓存 commit</div><div class="line">  remotes/origin/master         b70dd0f 有问题的文件上传做个提示...</div><div class="line">  remotes/origin/release-v1.1.0 b70dd0f 有问题的文件上传做个提示...</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>删除远程分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git push --delete origin dev</div><div class="line">To https://xxx.com/xxx/xxx.git</div><div class="line"> - [deleted]         dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>重命名本地分支：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -m devel dev-v1.2.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>推送本地分支：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ git push origin dev-v1.2.0</div><div class="line">Counting objects: 20, done.</div><div class="line">Delta compression using up to 4 threads.</div><div class="line">Compressing objects: 100% (13/13), done.</div><div class="line">Writing objects: 100% (20/20), 3.79 KiB | 0 bytes/s, done.</div><div class="line">Total 20 (delta 8), reused 19 (delta 7)</div><div class="line">remote:</div><div class="line">remote: Create merge request for dev-v1.2.0:</div><div class="line">remote:   https://xxx/merge_reque</div><div class="line">sts/new?merge_request%5Bsource_branch%5D=dev-v1.2.0</div><div class="line">remote:</div><div class="line">To https://xxx.git</div><div class="line"> * [new branch]      dev-v1.2.0 -&gt; dev-v1.2.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>再查看下所有的branch情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">* dev-v1.2.0                    c38c6b2 异步加载，缓存 commit</div><div class="line">  master                        b70dd0f 有问题的文件上传做个提示...</div><div class="line">  remotes/origin/HEAD           -&gt; origin/master</div><div class="line">  remotes/origin/dev-v1.2.0     c38c6b2 异步加载，缓存 commit</div><div class="line">  remotes/origin/master         b70dd0f 有问题的文件上传做个提示...</div><div class="line">  remotes/origin/release-v1.1.0 b70dd0f 有问题的文件上传做个提示...</div></pre></td></tr></table></figure>
+</li>
+<li><p>在删除远程分支的时候，容易碰到的问题就是如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git push --delete origin devel</div><div class="line">remote: error: refusing to delete the current branch: refs/heads/devel</div><div class="line">To git@github.com:zrong/quick-cocos2d-x.git</div><div class="line"> ! [remote rejected] devel (deletion of the current branch prohibited)</div><div class="line">error: failed to push some refs to &apos;git@github.com:zrong/quick-cocos2d-x.git&apos;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这是由于在 github 中，devel 是项目的默认分支。要解决此问题，这样操作：</p>
+<ul>
+<li>进入 github 中该项目的 Settings 页面；</li>
+<li>设置 Default Branch 为其他的分支（例如 master）；</li>
+<li>重新执行删除远程分支命令。</li>
+</ul>
+<blockquote>
+<p>该文主要参考<a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="external">blog</a></p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixingpay1.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-cli/">git cli</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://guimeisang.github.io/2016/12/16/正式开发中的版本管理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/12/16/常用的git入门命令行/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          常用的git入门命令行
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/12/16/正式开发中的版本管理/" data-title="正式开发中的版本管理" data-url="https://guimeisang.github.io/2016/12/16/正式开发中的版本管理/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 guimeisang
+    	</div>
+      	<div class="footer-right">
+          <span id="busuanzi_container_site_pv">
+              guimeisang博客总访问量<span id="busuanzi_value_site_pv"></span>次
+              当前页阅读量<span id="busuanzi_value_page_pv"></span>次
+          </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">angular 1.3 父子通信技术总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">前端和UI合作规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">前后端分离问题总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">editor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs 批量修改图片名称</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">location 环境配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">jQuery插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">2017自白</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">js小效果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">component</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ueditor二次开发，ueditor自定义plugins和execCommand方法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ueditor二次开发 自定义事件event</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">周末生活系列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ES6 require import 模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">移动端 调试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ueditor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">dialog</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://litten.me/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>litten</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.ui.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>UI</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.layui.com/demo/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>components</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">guimeisang &lt;br&gt;毕业于湖南大学 &lt;br&gt;前端开发，只想过着自己想过的生活 &lt;br&gt;年轻无为，卖马为生。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://guimeisang.github.io">
+  <title>require和import的理解 | guimeisang的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文作者：guimeisang，未经同意，禁止转载  以时间为维度，分为ES6之前和ES6之后。其实为了实现javascript的工程化，才引出模块化这个概念，require，import就是为实现这个而生。  在ES6之前在ES6之前引入了模块的概念，主要是为了适应大型应用的。node的module遵守CommonJS规范。而在浏览器端，requirejs和seajs之类的工具包也出现了。所以说">
+<meta name="keywords" content="ES6 require import 模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="require和import的理解">
+<meta property="og:url" content="https://guimeisang.github.io/2017/08/11/require和import的理解/index.html">
+<meta property="og:site_name" content="guimeisang的博客">
+<meta property="og:description" content="本文作者：guimeisang，未经同意，禁止转载  以时间为维度，分为ES6之前和ES6之后。其实为了实现javascript的工程化，才引出模块化这个概念，require，import就是为实现这个而生。  在ES6之前在ES6之前引入了模块的概念，主要是为了适应大型应用的。node的module遵守CommonJS规范。而在浏览器端，requirejs和seajs之类的工具包也出现了。所以说">
+<meta property="og:updated_time" content="2017-08-11T09:43:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="require和import的理解">
+<meta name="twitter:description" content="本文作者：guimeisang，未经同意，禁止转载  以时间为维度，分为ES6之前和ES6之后。其实为了实现javascript的工程化，才引出模块化这个概念，require，import就是为实现这个而生。  在ES6之前在ES6之前引入了模块的概念，主要是为了适应大型应用的。node的module遵守CommonJS规范。而在浏览器端，requirejs和seajs之类的工具包也出现了。所以说">
+  
+    <link rel="alternative" href="/atom.xml" title="guimeisang的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/assets/img/logo.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/assets/img/guimeiImg.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">guimeisang</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">和平认真，真诚待人</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/phones">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/guimeisang" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2954853535" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">guimeisang</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/assets/img/guimeiImg.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">guimeisang</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">和平认真，真诚待人</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/phones">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/guimeisang" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2954853535" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-require和import的理解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      require和import的理解
+    </h1>
+  
+
+        <a href="/2017/08/11/require和import的理解/" class="archive-article-date">
+  	<time datetime="2017-08-11T09:39:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>本文作者：guimeisang，未经同意，禁止转载</strong></p>
+<blockquote>
+<p>以时间为维度，分为ES6之前和ES6之后。其实为了实现javascript的工程化，才引出模块化这个概念，require，import就是为实现这个而生。</p>
+</blockquote>
+<h2 id="在ES6之前"><a href="#在ES6之前" class="headerlink" title="在ES6之前"></a>在ES6之前</h2><p>在ES6之前引入了模块的概念，主要是为了适应大型应用的。node的module遵守CommonJS规范。而在浏览器端，requirejs和seajs之类的工具包也出现了。所以说在node端，浏览器端。<code>require + module.exports</code>基本实现了所有模块化的编程。  </p>
+<p>node的module遵循CommonJS规范，requirejs遵循AMD，seajs遵循CMD，虽然各有不同，但代码风格相似。 下面是模块导出端：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// demo1.js</span></div><div class="line"></div><div class="line"><span class="comment">// ---- node ----</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    a : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</div><div class="line">    b : <span class="string">'foo'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// ----- 浏览器 AMD 和 CMD -----</span></div><div class="line"></div><div class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>)</span>&#123;</div><div class="line">    <span class="built_in">module</span>.exports = &#123;</div><div class="line">        a : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</div><div class="line">        b : <span class="string">'foo'</span></div><div class="line">    &#125;;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// ------ UMD ------</span></div><div class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;&#125;; <span class="comment">// return 的值就是导出的模块 </span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>可以看出来，为了代码风格相似，<strong>浏览器端的模块中要使用一个define函数来提供模块的闭包以外，其他代码可以完全一致。</strong> 下面是导入模块：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// demo2.js</span></div><div class="line"></div><div class="line"><span class="comment">// ---- node -----</span></div><div class="line"><span class="keyword">var</span> m = <span class="built_in">require</span>(<span class="string">'./demo1'</span>);</div><div class="line">m.a();</div><div class="line"></div><div class="line"><span class="comment">// ---- AMD or CMD ----</span></div><div class="line">defined(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> m = <span class="built_in">require</span>(<span class="string">'./a'</span>);</div><div class="line">    m.a();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>node发布的时候，就天生具备module，node相当于促进了js世界里面的模块化编程。  </p>
+<p>注意：exports是module.exports的“别名”，即exports是module.exports地址的引用。</p>
+<h2 id="ES6发布之后"><a href="#ES6发布之后" class="headerlink" title="ES6发布之后"></a>ES6发布之后</h2><p>ES6没有把require写入标准，所以其还是一个普通的函数，ES6使用import指令引入模块或模块中的部分接口。而导出的话，ES6标准中，用export指令，也就是说，module.exports只是node，requirejs等模块化库中的自定义变量，而非ES标准接口。</p>
+<h4 id="模块导出"><a href="#模块导出" class="headerlink" title="模块导出"></a>模块导出</h4><p>下面是导出模块的部分：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"><span class="keyword">export</span> &#123; name1, name2, ..., nameN &#125;;</div><div class="line"><span class="keyword">export</span> &#123; variable1 <span class="keyword">as</span> name1, variable2 <span class="keyword">as</span> name2, ..., nameN &#125;;</div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> name1, name2, ..., nameN;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> expression;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">...</span>)</span>&#123;...&#125;;</div><div class="line"></div><div class="line"><span class="keyword">export</span> * <span class="keyword">from</span> ...;</div><div class="line"><span class="keyword">export</span> &#123; name1, name2, ..., nameN &#125; <span class="keyword">from</span> ...;</div><div class="line"><span class="keyword">export</span> &#123; import1 <span class="keyword">as</span> name1, ..., nameN &#125; <span class="keyword">from</span> ...;</div></pre></td></tr></table></figure></p>
+<p>ES6里面，直接把要导出的变量，函数，对象，类等前面加上一个export关键词，错误演示：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 错误演示</span></div><div class="line"><span class="keyword">export</span> <span class="number">1</span>; </div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">export</span> a;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="keyword">export</span> b;</div></pre></td></tr></table></figure>
+<p>这种直接内容，而不是导出变量绝对是错误的，或者说导出表达式也是错误的。导出接口仅限两种：</p>
+<ul>
+<li>声明时导出；</li>
+<li>以对象的形式导出（和解构联系起来）；</li>
+</ul>
+<p>如果要导出某个变量，可以如下导出：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">export &#123;a&#125;; // 解构，相当于&#123;a: a&#125;</div><div class="line">function b()&#123;&#125;;</div><div class="line">export &#123;b&#125;;</div></pre></td></tr></table></figure>
+<p><strong>敲黑板，划重点：</strong> ES6最厉害的地方在于，可以在export变量之后，继续修改变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export cosnt a = 0;</div><div class="line">a = 1;</div><div class="line"></div><div class="line">// 在import之后，发现a的值为1，这个是CommonJS不能做到的。</div></pre></td></tr></table></figure>
+<h4 id="模块导入"><a href="#模块导入" class="headerlink" title="模块导入"></a>模块导入</h4><blockquote>
+<p>和node之前的require不一样，require只能把模块放到一个变量中，而在ES6中，拥有对象解构赋值的能力，所以直接就把引入的模块接口赋值给变量了。内在机理也不同，require需要执行整个模块，就是将整个模块放到内存中（也就是我们说的在运行时），如果只是用到里面一个方法，性能上就差很多，而import…from，则只需要在编译的时候将需要的接口方法加载，其他的方法在程序启动之后根本触及不到，所以被称为在编译时，性能上有很大的改善。  </p>
+</blockquote>
+<h5 id="as-关键词"><a href="#as-关键词" class="headerlink" title="as 关键词"></a>as 关键词</h5><p>简单来说就是一个别名。export和import都可以用。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// demo1.js</div><div class="line"></div><div class="line">var a = function() &#123;&#125;;  </div><div class="line">export &#123; a as fun &#125;</div><div class="line"></div><div class="line">// demo2.js</div><div class="line"></div><div class="line">import &#123; fun as a &#125; from &apos;./demo1&apos;;</div><div class="line">a();</div></pre></td></tr></table></figure>
+<p>上面代码中，demo1.js中，以fun代替a这个函数，所以在外面的模块中只能识别到fun，识别不到a。而在demo2.js中，引入fun方法，但是我们用a去代替它。（这有个好处就是，比如demo3.js也导出一个fun的接口，这个时候这个别名就很有用。可以解决这种接口重名的问题）</p>
+<h5 id="default-关键词"><a href="#default-关键词" class="headerlink" title="default 关键词"></a>default 关键词</h5><p>简单来说就是别名的语法糖。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// demo1.js</div><div class="line"></div><div class="line">export default function() &#123;&#125;</div><div class="line">// 等效于</div><div class="line">function a() &#123;&#125;</div><div class="line">export &#123;a as default&#125;</div></pre></td></tr></table></figure>
+<p>在导入的时候：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import a from &apos;./demo1&apos;;</div><div class="line">// 等效于</div><div class="line">import &#123;default as a&#125; from &apos;./d&apos;;</div></pre></td></tr></table></figure>
+<h5 id="符号"><a href="#符号" class="headerlink" title="* 符号"></a>* 符号</h5><p>简单来说，*代表所有，看下面的两个例子：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import * as foo from &apos;_&apos;;</div></pre></td></tr></table></figure>
+<p>意思是：将’_’模块中所有接口挂载在foo对象上，所以可以用underscore.each调用某个接口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">export * from &apos;_&apos;;</div><div class="line"></div><div class="line">// 等效于</div><div class="line">import * as all from &apos;_&apos;;</div><div class="line">export all;</div></pre></td></tr></table></figure>
+<h2 id="怎么用require和import这两兄弟？"><a href="#怎么用require和import这两兄弟？" class="headerlink" title="怎么用require和import这两兄弟？"></a>怎么用require和import这两兄弟？</h2><p>总体感觉，既然ES6将import加入到标准了，这个时候一般还是乖乖的用import的吧。虽然说现在引擎还不能支持import，依然是用bable神器解析成reqiure，所以现在你会发现有些之前的CommonJS模块，依然可以用import引用。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// demo1.js</div><div class="line">module.exports = &#123;&#125;;</div><div class="line"></div><div class="line">// demo2.js</div><div class="line">import a from &apos;./demo1&apos;;</div></pre></td></tr></table></figure>
+<p>这种混搭不是很好，但是可以用。</p>
+<p>不过现在不是所有的环境都支持import，所以可以使用babel让node支持ES6，但是浏览器端，则毫无办法，可能暂时用require。但是很遗憾你ES6并不兼容require，所以到时候你必须要升级代码。   </p>
+<p>import只能在文件开头使用，在import之前，你不能有其他的代码，这和其他语言是一样的。但是require则不同，它相当于node的一个定义在全局的函数，你可以在任意地方使用它，甚至使用变量表达式作为它的参数，这样有一个好处，就是可以在循环中加载模块。   </p>
+<p>最后说一句，js引擎们很快就会实现ES6标准规定，如果时一个引擎标准都没办法实现，就会被淘汰，所以尽在去部署import，你未来可能改的代码越少。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixingpay1.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6-require-import-模块/">ES6 require import 模块</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://guimeisang.github.io/2017/08/11/require和import的理解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2017/08/11/require和import的理解/" data-title="require和import的理解" data-url="https://guimeisang.github.io/2017/08/11/require和import的理解/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 guimeisang
+    	</div>
+      	<div class="footer-right">
+          <span id="busuanzi_container_site_pv">
+              guimeisang博客总访问量<span id="busuanzi_value_site_pv"></span>次
+              当前页阅读量<span id="busuanzi_value_page_pv"></span>次
+          </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">angular 1.3 父子通信技术总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">前端和UI合作规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">前后端分离问题总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">editor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs 批量修改图片名称</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">location 环境配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">jQuery插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">2017自白</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">js小效果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">component</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ueditor二次开发，ueditor自定义plugins和execCommand方法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ueditor二次开发 自定义事件event</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">周末生活系列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ES6 require import 模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">移动端 调试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ueditor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">dialog</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://litten.me/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>litten</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.ui.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>UI</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.layui.com/demo/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>components</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">guimeisang &lt;br&gt;毕业于湖南大学 &lt;br&gt;前端开发，只想过着自己想过的生活 &lt;br&gt;年轻无为，卖马为生。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
