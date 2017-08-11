@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://guimeisang.github.io/"/>
-  <updated>2017-08-11T09:43:05.000Z</updated>
+  <updated>2017-08-11T09:49:28.000Z</updated>
   <id>https://guimeisang.github.io/</id>
   
   <author>
@@ -20,12 +20,13 @@
     <link href="https://guimeisang.github.io/2017/08/11/require%E5%92%8Cimport%E7%9A%84%E7%90%86%E8%A7%A3/"/>
     <id>https://guimeisang.github.io/2017/08/11/require和import的理解/</id>
     <published>2017-08-11T09:39:12.000Z</published>
-    <updated>2017-08-11T09:43:05.000Z</updated>
+    <updated>2017-08-11T09:49:28.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>本文作者：guimeisang，未经同意，禁止转载</strong></p>
 <blockquote>
 <p>以时间为维度，分为ES6之前和ES6之后。其实为了实现javascript的工程化，才引出模块化这个概念，require，import就是为实现这个而生。</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="在ES6之前"><a href="#在ES6之前" class="headerlink" title="在ES6之前"></a>在ES6之前</h2><p>在ES6之前引入了模块的概念，主要是为了适应大型应用的。node的module遵守CommonJS规范。而在浏览器端，requirejs和seajs之类的工具包也出现了。所以说在node端，浏览器端。<code>require + module.exports</code>基本实现了所有模块化的编程。  </p>
 <p>node的module遵循CommonJS规范，requirejs遵循AMD，seajs遵循CMD，虽然各有不同，但代码风格相似。 下面是模块导出端：   </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// demo1.js</span></div><div class="line"></div><div class="line"><span class="comment">// ---- node ----</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    a : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</div><div class="line">    b : <span class="string">'foo'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// ----- 浏览器 AMD 和 CMD -----</span></div><div class="line"></div><div class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>)</span>&#123;</div><div class="line">    <span class="built_in">module</span>.exports = &#123;</div><div class="line">        a : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</div><div class="line">        b : <span class="string">'foo'</span></div><div class="line">    &#125;;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// ------ UMD ------</span></div><div class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;&#125;; <span class="comment">// return 的值就是导出的模块 </span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -72,41 +73,13 @@
     
       &lt;p&gt;&lt;strong&gt;本文作者：guimeisang，未经同意，禁止转载&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;以时间为维度，分为ES6之前和ES6之后。其实为了实现javascript的工程化，才引出模块化这个概念，require，import就是为实现这个
+&lt;p&gt;以时间为维度，分为ES6之前和ES6之后。其实为了实现javascript的工程化，才引出模块化这个概念，require，import就是为实现这个而生。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
     
       <category term="ES6 require import 模块" scheme="https://guimeisang.github.io/tags/ES6-require-import-%E6%A8%A1%E5%9D%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://guimeisang.github.io/2017/08/05/hello-world/"/>
-    <id>https://guimeisang.github.io/2017/08/05/hello-world/</id>
-    <published>2017-08-05T09:11:26.000Z</published>
-    <updated>2017-08-05T09:11:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
     
   </entry>
   
@@ -618,56 +591,6 @@
   </entry>
   
   <entry>
-    <title>周末生活系列之一</title>
-    <link href="https://guimeisang.github.io/2017/01/08/%E5%91%A8%E6%9C%AB%E7%94%9F%E6%B4%BB%E7%B3%BB%E5%88%97%E4%B9%8B%E4%B8%80/"/>
-    <id>https://guimeisang.github.io/2017/01/08/周末生活系列之一/</id>
-    <published>2017-01-08T10:16:33.000Z</published>
-    <updated>2017-08-05T09:11:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="突然有段时间你会很想学做菜"><a href="#突然有段时间你会很想学做菜" class="headerlink" title="突然有段时间你会很想学做菜"></a>突然有段时间你会很想学做菜</h3><blockquote>
-<p>最近桂梅桑开始痴迷做饭，希望在过年的时候再去看看有什么新的做法，get这些技能。以后就可以自己想吃就可以自己做了</p>
-</blockquote>
-<a id="more"></a>
-<ul>
-<li>辣椒酱油虾<br>材料： 辣椒（可以根据想吃的辣度，我一般喜欢比较辣的），蒜头，大蒜叶，老姜，8两虾米（两三人的量），酱油，鱼鼓油（李锦记的），鸡精。　 </li>
-</ul>
-<p>步骤：  </p>
-<ol>
-<li>先将虾用滚热的水过一次，虾米变红为止（里面必须切大片的姜去腥）  </li>
-<li>将辣椒，蒜头，老姜，蒜叶先切好  </li>
-<li>放油，先将辣椒，蒜头，老姜等比较硬的作料炒出香味。  </li>
-<li>放虾（此间只要是或有点大，有烧焦的迹象，就放入点酱油，鱼鼓油，放盐巴，鸡精等。）</li>
-<li>在出锅的时候，放入大蒜叶。  </li>
-<li>然后放点酱油和醋做蘸料就可以开吃啦  </li>
-</ol>
-<ul>
-<li>家常油豆腐<br>材料：辣椒（建议辣点），蒜头，蒜叶，等  </li>
-</ul>
-<p>步骤：</p>
-<ol>
-<li>放入大蒜，辣椒爆炒（火小点）　　</li>
-<li>将油豆腐用水洗一下，然后对半切　　</li>
-<li>放入油豆腐炒下，放入酱油，鸡精等  </li>
-<li>放水，盐巴，煮一下。</li>
-<li>出锅时，放入蒜叶翻炒即可</li>
-</ol>
-<p>生活用美味点缀，很美妙…</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;突然有段时间你会很想学做菜&quot;&gt;&lt;a href=&quot;#突然有段时间你会很想学做菜&quot; class=&quot;headerlink&quot; title=&quot;突然有段时间你会很想学做菜&quot;&gt;&lt;/a&gt;突然有段时间你会很想学做菜&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;最近桂梅桑开始痴迷做饭，希望在过年的时候再去看看有什么新的做法，get这些技能。以后就可以自己想吃就可以自己做了&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="周末生活系列" scheme="https://guimeisang.github.io/tags/%E5%91%A8%E6%9C%AB%E7%94%9F%E6%B4%BB%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
     <title>给ueditor添加dialog</title>
     <link href="https://guimeisang.github.io/2017/01/02/%E7%BB%99ueditor%E6%B7%BB%E5%8A%A0dialog/"/>
     <id>https://guimeisang.github.io/2017/01/02/给ueditor添加dialog/</id>
@@ -738,9 +661,9 @@
     <link href="https://guimeisang.github.io/2017/01/02/%E6%8B%92%E7%BB%9D/"/>
     <id>https://guimeisang.github.io/2017/01/02/拒绝/</id>
     <published>2017-01-02T02:01:07.000Z</published>
-    <updated>2017-08-05T09:11:26.000Z</updated>
+    <updated>2017-08-11T09:45:47.000Z</updated>
     
-    <content type="html"><![CDATA[<p>2016年，自己想要的一年<br><a id="more"></a><br>也许上半年，平静和孤独<br>下半年，开始的充实，踏实<br>直到她走入我的生活<br>难题再次出现，时间和精力…<br>我想回归，不是她的错，是我没有安排好，是我没控制住…<br>也许下次最需要考虑的事情，就是“拒绝”<br>拒绝不必要的时间浪费，不必要的精力…<br>拒绝贪念…<br>那便是成熟…</p>
+    <content type="html"><![CDATA[<p>2016年，自己想要的一年<br><a id="more"></a><br>也许上半年，平静和孤独<br>下半年，开始的充实，踏实<br>难题再次出现，时间和精力<br>拒绝不必要的时间浪费，不必要的精力<br>拒绝不必要的<br>那便是成熟</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=186693&auto=0&height=66"></iframe>
 ]]></content>
     
@@ -824,34 +747,6 @@
     
     
       <category term="editor" scheme="https://guimeisang.github.io/tags/editor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>周日学做菜</title>
-    <link href="https://guimeisang.github.io/2016/12/18/%E5%91%A8%E6%97%A5%E5%AD%A6%E5%81%9A%E8%8F%9C/"/>
-    <id>https://guimeisang.github.io/2016/12/18/周日学做菜/</id>
-    <published>2016-12-18T15:51:26.000Z</published>
-    <updated>2017-08-05T09:11:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>三个菜.jpg</p>
-<p>周末表妹过来<br>她依旧如此美丽，却多了些贤惠和能干  </p>
-<p>鸡爪和萍乡小炒肉她炒的<br>说是来尝我的菜，结果我就做了一个白菜<br>很是不太好意思  </p>
-<p>脑子里现在过一下从选材到切菜，配料，下锅<br>萍乡小炒肉，肉切薄点，先用酱油盐卤一下，大蒜切细，葱，蒜叶，干辣椒，生抽<br>鸡爪，先水过一下，筷子可戳动，去掉爪子，切两半 ，炒大蒜和蒜根，放入鸡爪，酱油，干辣椒，生抽    </p>
-<p>实践才能将知识理论转化为智慧<br>我想做一个有智慧的人<br>你会来试菜吗？  </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;三个菜.jpg&lt;/p&gt;
-&lt;p&gt;周末表妹过来&lt;br&gt;她依旧如此美丽，却多了些贤惠和能干  &lt;/p&gt;
-&lt;p&gt;鸡爪和萍乡小炒肉她炒的&lt;br&gt;说是来尝我的菜，结果我就做了一个白菜&lt;br&gt;很是不太好意思  &lt;/p&gt;
-&lt;p&gt;脑子里现在过一下从选材到切菜，配料，下锅&lt;br&gt;萍乡小炒肉，肉
-    
-    </summary>
-    
-    
-      <category term="生活" scheme="https://guimeisang.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
@@ -1050,6 +945,113 @@
     
     
       <category term="git cli" scheme="https://guimeisang.github.io/tags/git-cli/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>周日学做菜</title>
+    <link href="https://guimeisang.github.io/2015/12/18/%E5%91%A8%E6%97%A5%E5%AD%A6%E5%81%9A%E8%8F%9C/"/>
+    <id>https://guimeisang.github.io/2015/12/18/周日学做菜/</id>
+    <published>2015-12-18T15:51:26.000Z</published>
+    <updated>2017-08-11T09:48:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>三个菜.jpg</p>
+<p>周末表妹过来<br>她依旧如此美丽，却多了些贤惠和能干  </p>
+<p>鸡爪和萍乡小炒肉她炒的<br>说是来尝我的菜，结果我就做了一个白菜<br>很是不太好意思  </p>
+<p>脑子里现在过一下从选材到切菜，配料，下锅<br>萍乡小炒肉，肉切薄点，先用酱油盐卤一下，大蒜切细，葱，蒜叶，干辣椒，生抽<br>鸡爪，先水过一下，筷子可戳动，去掉爪子，切两半 ，炒大蒜和蒜根，放入鸡爪，酱油，干辣椒，生抽    </p>
+<p>实践才能将知识理论转化为智慧<br>我想做一个有智慧的人<br>你会来试菜吗？  </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;三个菜.jpg&lt;/p&gt;
+&lt;p&gt;周末表妹过来&lt;br&gt;她依旧如此美丽，却多了些贤惠和能干  &lt;/p&gt;
+&lt;p&gt;鸡爪和萍乡小炒肉她炒的&lt;br&gt;说是来尝我的菜，结果我就做了一个白菜&lt;br&gt;很是不太好意思  &lt;/p&gt;
+&lt;p&gt;脑子里现在过一下从选材到切菜，配料，下锅&lt;br&gt;萍乡小炒肉，肉
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="https://guimeisang.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://guimeisang.github.io/2015/04/08/hello-world/"/>
+    <id>https://guimeisang.github.io/2015/04/08/hello-world/</id>
+    <published>2015-04-08T10:09:12.000Z</published>
+    <updated>2017-08-11T09:48:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>周末生活系列之一</title>
+    <link href="https://guimeisang.github.io/2015/01/08/%E5%91%A8%E6%9C%AB%E7%94%9F%E6%B4%BB%E7%B3%BB%E5%88%97%E4%B9%8B%E4%B8%80/"/>
+    <id>https://guimeisang.github.io/2015/01/08/周末生活系列之一/</id>
+    <published>2015-01-08T10:16:33.000Z</published>
+    <updated>2017-08-11T09:48:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="突然有段时间你会很想学做菜"><a href="#突然有段时间你会很想学做菜" class="headerlink" title="突然有段时间你会很想学做菜"></a>突然有段时间你会很想学做菜</h3><blockquote>
+<p>最近桂梅桑开始痴迷做饭，希望在过年的时候再去看看有什么新的做法，get这些技能。以后就可以自己想吃就可以自己做了</p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>辣椒酱油虾<br>材料： 辣椒（可以根据想吃的辣度，我一般喜欢比较辣的），蒜头，大蒜叶，老姜，8两虾米（两三人的量），酱油，鱼鼓油（李锦记的），鸡精。　 </li>
+</ul>
+<p>步骤：  </p>
+<ol>
+<li>先将虾用滚热的水过一次，虾米变红为止（里面必须切大片的姜去腥）  </li>
+<li>将辣椒，蒜头，老姜，蒜叶先切好  </li>
+<li>放油，先将辣椒，蒜头，老姜等比较硬的作料炒出香味。  </li>
+<li>放虾（此间只要是或有点大，有烧焦的迹象，就放入点酱油，鱼鼓油，放盐巴，鸡精等。）</li>
+<li>在出锅的时候，放入大蒜叶。  </li>
+<li>然后放点酱油和醋做蘸料就可以开吃啦  </li>
+</ol>
+<ul>
+<li>家常油豆腐<br>材料：辣椒（建议辣点），蒜头，蒜叶，等  </li>
+</ul>
+<p>步骤：</p>
+<ol>
+<li>放入大蒜，辣椒爆炒（火小点）　　</li>
+<li>将油豆腐用水洗一下，然后对半切　　</li>
+<li>放入油豆腐炒下，放入酱油，鸡精等  </li>
+<li>放水，盐巴，煮一下。</li>
+<li>出锅时，放入蒜叶翻炒即可</li>
+</ol>
+<p>生活用美味点缀，很美妙…</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;突然有段时间你会很想学做菜&quot;&gt;&lt;a href=&quot;#突然有段时间你会很想学做菜&quot; class=&quot;headerlink&quot; title=&quot;突然有段时间你会很想学做菜&quot;&gt;&lt;/a&gt;突然有段时间你会很想学做菜&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;最近桂梅桑开始痴迷做饭，希望在过年的时候再去看看有什么新的做法，get这些技能。以后就可以自己想吃就可以自己做了&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="周末生活系列" scheme="https://guimeisang.github.io/tags/%E5%91%A8%E6%9C%AB%E7%94%9F%E6%B4%BB%E7%B3%BB%E5%88%97/"/>
     
   </entry>
   
