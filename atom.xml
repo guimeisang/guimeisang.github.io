@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://guimeisang.github.io/"/>
-  <updated>2017-08-11T09:49:28.000Z</updated>
+  <updated>2017-08-15T01:48:13.000Z</updated>
   <id>https://guimeisang.github.io/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react编程思想</title>
+    <link href="https://guimeisang.github.io/2017/08/15/react%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/"/>
+    <id>https://guimeisang.github.io/2017/08/15/react编程思想/</id>
+    <published>2017-08-15T01:47:02.000Z</published>
+    <updated>2017-08-15T01:48:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在我的理解中，React是JavaScript构建大型，高性能Web应用的最佳选择。    </p>
+<p>React很重要的部分是思考如何构建应用程序。</p>
+<a id="more"></a>
+<p>首先我们会有一个JSON API。并且从UI那边得到UI图稿。   </p>
+<h3 id="步骤1-将UI拆解到组件层次结构中"><a href="#步骤1-将UI拆解到组件层次结构中" class="headerlink" title="步骤1: 将UI拆解到组件层次结构中"></a>步骤1: 将UI拆解到组件层次结构中</h3><blockquote>
+<p>就是将需求文档，拿到的时候，对其进行分解。其中要遵循“单一职责原则”。即在理想情况下，一个组件只处理一件事。</p>
+</blockquote>
+<p>如下组件结构：</p>
+<ul>
+<li>a<ul>
+<li>a-1</li>
+<li>a-2</li>
+<li>a-3<ul>
+<li>a-3-1</li>
+<li>a-3-2</li>
+<li>a-3-3</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="步骤2-用react构建一个静态版本"><a href="#步骤2-用react构建一个静态版本" class="headerlink" title="步骤2: 用react构建一个静态版本"></a>步骤2: 用react构建一个静态版本</h3><blockquote>
+<p>有了你的组件层次结构，就可以去实现静态app。注意在实现的过程中只先实现一个渲染ui无交互效果的版本。并且不能在过程中使用state，因为要知道state只能用于交互中。用Props，组件的属性进行传值就好。</p>
+</blockquote>
+<h3 id="确定UI-state的最小但是完整的表示"><a href="#确定UI-state的最小但是完整的表示" class="headerlink" title="确定UI state的最小但是完整的表示"></a>确定UI state的最小但是完整的表示</h3><blockquote>
+<p>如果说你想你的app能够交互，那么你需要触发底层的数据模型。React通过state可以实现。</p>
+</blockquote>
+<p>具体策略就是：</p>
+<ol>
+<li>先将所有可能的数据list出来（新手推荐）；</li>
+<li>分析每一个数据，按照下面三个标准来确定是不是state；<ul>
+<li>是否可以通过父组件Props传值；</li>
+<li>是否永远不发生变化；</li>
+<li>是否可以通过state，props计算出来；</li>
+</ul>
+</li>
+<li>最终确定state（状态）是哪几个；  </li>
+</ol>
+<h3 id="确定state-状态-在哪个组件中"><a href="#确定state-状态-在哪个组件中" class="headerlink" title="确定state(状态)在哪个组件中"></a>确定state(状态)在哪个组件中</h3><blockquote>
+<p>React单向数据流在层级中自上而下，需要判断出状态属于哪个组件。</p>
+</blockquote>
+<p>具体策略：  </p>
+<ol>
+<li>确定每个需要基于state(状态)渲染的组件；</li>
+<li>找出公共的父组件；</li>
+<li>如果找不出公共父组件，可以创建一个简单的新组件保留这个state(状态)  </li>
+</ol>
+<h3 id="添加反向数据流"><a href="#添加反向数据流" class="headerlink" title="添加反向数据流"></a>添加反向数据流</h3><blockquote>
+<p>app已经有Props(属性)和state(状态)沿着层次结构向下传播，但是我们希望一下交互也可以改变state(状态)；<br>但是组件只能更新自己的state（状态），所以我们应该在公共父组件那边去更新，然后将传递到改组件中；在公共父组件中使用下面代码：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">handleFilterTextInput(filterText) &#123;</div><div class="line">    this.setState(&#123;</div><div class="line">        filterText: filterText</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>有的时候你可能会多写几行代码，但是切记阅读代码的重要性远远高于写代码，模块化，结构清晰的代码最利于阅读，特别是项目比较大的时候。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在我的理解中，React是JavaScript构建大型，高性能Web应用的最佳选择。    &lt;/p&gt;
+&lt;p&gt;React很重要的部分是思考如何构建应用程序。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="react 入门思考" scheme="https://guimeisang.github.io/tags/react-%E5%85%A5%E9%97%A8%E6%80%9D%E8%80%83/"/>
+    
+  </entry>
   
   <entry>
     <title>require和import的理解</title>
@@ -973,35 +1046,6 @@
     
     
       <category term="生活" scheme="https://guimeisang.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://guimeisang.github.io/2015/04/08/hello-world/"/>
-    <id>https://guimeisang.github.io/2015/04/08/hello-world/</id>
-    <published>2015-04-08T10:09:12.000Z</published>
-    <updated>2017-08-11T09:48:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
     
   </entry>
   
