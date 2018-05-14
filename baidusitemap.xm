@@ -89,14 +89,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/04/20/%E4%BC%98%E9%9B%85%E5%AE%9E%E7%8E%B0ueditor%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%C2%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6event/</loc>
+    <loc>https://guimeisang.github.io/2017/01/02/%E5%86%B3%E5%AE%9A/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>优雅实现ueditor二次开发·自定义事件event</title>
-        <pubTime>2017-04-20T04:44:21.000Z</pubTime>
+        <title>决定</title>
+        <pubTime>2017-01-02T02:01:30.000Z</pubTime>
         
-        <tag>ueditor二次开发 自定义事件event</tag>
+        <tag>2017自白</tag>
          
          
            
@@ -123,14 +123,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/01/10/nodejs%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E5%9B%BE%E7%89%87%E5%90%8D%E7%A7%B0/</loc>
+    <loc>https://guimeisang.github.io/2016/12/23/how-to-use-a-new-plugin/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>nodejs批量修改图片名称</title>
-        <pubTime>2017-01-10T06:14:37.000Z</pubTime>
+        <title>how to use a new plugin</title>
+        <pubTime>2016-12-23T02:38:12.000Z</pubTime>
         
-        <tag>nodejs 批量修改图片名称</tag>
+        <tag>editor</tag>
          
          
            
@@ -140,14 +140,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/04/18/printThis%E4%BD%93%E9%AA%8C/</loc>
+    <loc>https://guimeisang.github.io/2017/01/10/nodejs%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E5%9B%BE%E7%89%87%E5%90%8D%E7%A7%B0/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>printThis体验</title>
-        <pubTime>2017-04-18T02:18:48.000Z</pubTime>
+        <title>nodejs批量修改图片名称</title>
+        <pubTime>2017-01-10T06:14:37.000Z</pubTime>
         
-        <tag>jQuery插件</tag>
+        <tag>nodejs 批量修改图片名称</tag>
          
          
            
@@ -174,14 +174,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2016/12/16/%E4%B8%80%E7%A7%8D%E9%9C%80%E8%A6%81%E8%BF%94%E5%9B%9EID%E7%9A%84%E4%B8%8B%E6%8B%89%E6%A1%86%E6%8F%92%E4%BB%B6/</loc>
+    <loc>https://guimeisang.github.io/2017/01/18/%E4%B8%8A%E4%BC%A0%E5%A4%B4%E5%83%8F%E6%8F%92%E4%BB%B6/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>一种需要返回ID的下拉框插件</title>
-        <pubTime>2016-12-16T03:59:50.000Z</pubTime>
+        <title>上传头像插件</title>
+        <pubTime>2017-01-18T09:18:47.000Z</pubTime>
         
-        <tag>component</tag>
+        <tag>插件</tag>
          
          
            
@@ -208,14 +208,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/04/18/%E4%BC%98%E9%9B%85%E5%AE%9E%E7%8E%B0ueditor%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%C2%B7%E8%87%AA%E5%AE%9A%E4%B9%89UE-plugins-execCommand-%E6%96%B9%E6%B3%95/</loc>
+    <loc>https://guimeisang.github.io/2016/12/16/%E4%B8%80%E7%A7%8D%E9%9C%80%E8%A6%81%E8%BF%94%E5%9B%9EID%E7%9A%84%E4%B8%8B%E6%8B%89%E6%A1%86%E6%8F%92%E4%BB%B6/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>优雅实现ueditor二次开发·自定义UE.plugins&&execCommand()方法</title>
-        <pubTime>2017-04-18T03:42:22.000Z</pubTime>
+        <title>一种需要返回ID的下拉框插件</title>
+        <pubTime>2016-12-16T03:59:50.000Z</pubTime>
         
-        <tag>ueditor二次开发，ueditor自定义plugins和execCommand方法</tag>
+        <tag>component</tag>
          
          
            
@@ -225,14 +225,31 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/01/18/%E4%B8%8A%E4%BC%A0%E5%A4%B4%E5%83%8F%E6%8F%92%E4%BB%B6/</loc>
+    <loc>https://guimeisang.github.io/2017/04/20/%E4%BC%98%E9%9B%85%E5%AE%9E%E7%8E%B0ueditor%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%C2%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6event/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>上传头像插件</title>
-        <pubTime>2017-01-18T09:18:47.000Z</pubTime>
+        <title>优雅实现ueditor二次开发·自定义事件event</title>
+        <pubTime>2017-04-20T04:44:21.000Z</pubTime>
         
-        <tag>插件</tag>
+        <tag>ueditor二次开发 自定义事件event</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://guimeisang.github.io/2017/04/18/%E4%BC%98%E9%9B%85%E5%AE%9E%E7%8E%B0ueditor%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%C2%B7%E8%87%AA%E5%AE%9A%E4%B9%89UE-plugins-execCommand-%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2017-08-05T09:11:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>优雅实现ueditor二次开发·自定义UE.plugins&&execCommand()方法</title>
+        <pubTime>2017-04-18T03:42:22.000Z</pubTime>
+        
+        <tag>ueditor二次开发，ueditor自定义plugins和execCommand方法</tag>
          
          
            
@@ -276,14 +293,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/01/02/%E5%86%B3%E5%AE%9A/</loc>
+    <loc>https://guimeisang.github.io/2017/04/08/angular%E4%B8%ADng-show%E5%92%8Cng-if%E7%9A%84%E5%BE%AE%E5%A6%99%E5%8C%BA%E5%88%AB/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>决定</title>
-        <pubTime>2017-01-02T02:01:30.000Z</pubTime>
+        <title>angular中ng-show和ng-if的微妙区别</title>
+        <pubTime>2017-04-08T10:09:12.000Z</pubTime>
         
-        <tag>2017自白</tag>
+        <tag>angular</tag>
          
          
            
@@ -293,14 +310,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/04/08/angular%E4%B8%ADng-show%E5%92%8Cng-if%E7%9A%84%E5%BE%AE%E5%A6%99%E5%8C%BA%E5%88%AB/</loc>
+    <loc>https://guimeisang.github.io/2017/05/19/location%E5%92%8C%E5%88%86%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>angular中ng-show和ng-if的微妙区别</title>
-        <pubTime>2017-04-08T10:09:12.000Z</pubTime>
+        <title>location和分环境开发</title>
+        <pubTime>2017-05-19T09:29:34.000Z</pubTime>
         
-        <tag>angular</tag>
+        <tag>location 环境配置</tag>
          
          
            
@@ -327,31 +344,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2016/12/23/how-to-use-a-new-plugin/</loc>
+    <loc>https://guimeisang.github.io/2017/04/18/printThis%E4%BD%93%E9%AA%8C/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>how to use a new plugin</title>
-        <pubTime>2016-12-23T02:38:12.000Z</pubTime>
+        <title>printThis体验</title>
+        <pubTime>2017-04-18T02:18:48.000Z</pubTime>
         
-        <tag>editor</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://guimeisang.github.io/2017/05/19/location%E5%92%8C%E5%88%86%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2017-08-05T09:11:26.000Z</lastmod>
-    <data>
-        <display>
-        <title>location和分环境开发</title>
-        <pubTime>2017-05-19T09:29:34.000Z</pubTime>
-        
-        <tag>location 环境配置</tag>
+        <tag>jQuery插件</tag>
          
          
            
