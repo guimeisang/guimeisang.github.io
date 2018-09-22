@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>https://guimeisang.github.io/2018/09/23/%E6%9C%80%E8%BF%91%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/</loc>
+    <lastmod>2018-09-22T16:32:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>最近的一点思考</title>
+        <pubTime>2018-09-22T16:16:00.000Z</pubTime>
+        
+        <tag>思考</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://guimeisang.github.io/2017/08/15/react%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</loc>
     <lastmod>2017-08-15T01:48:13.000Z</lastmod>
     <data>
@@ -106,40 +123,6 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/04/08/js%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E7%9A%84%E4%BD%8D%E7%BD%AE/</loc>
-    <lastmod>2017-08-05T09:11:26.000Z</lastmod>
-    <data>
-        <display>
-        <title>js控制滚动条的位置</title>
-        <pubTime>2017-04-08T10:08:45.000Z</pubTime>
-        
-        <tag>js小效果</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://guimeisang.github.io/2016/12/23/how-to-use-a-new-plugin/</loc>
-    <lastmod>2017-08-05T09:11:26.000Z</lastmod>
-    <data>
-        <display>
-        <title>how to use a new plugin</title>
-        <pubTime>2016-12-23T02:38:12.000Z</pubTime>
-        
-        <tag>editor</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://guimeisang.github.io/2017/01/10/nodejs%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E5%9B%BE%E7%89%87%E5%90%8D%E7%A7%B0/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
@@ -157,31 +140,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/01/02/reviewAndPlan/</loc>
+    <loc>https://guimeisang.github.io/2017/04/18/printThis%E4%BD%93%E9%AA%8C/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>reviewAndPlan</title>
-        <pubTime>2017-01-02T02:00:38.000Z</pubTime>
+        <title>printThis体验</title>
+        <pubTime>2017-04-18T02:18:48.000Z</pubTime>
         
-        <tag>2017自白</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://guimeisang.github.io/2017/01/18/%E4%B8%8A%E4%BC%A0%E5%A4%B4%E5%83%8F%E6%8F%92%E4%BB%B6/</loc>
-    <lastmod>2017-08-05T09:11:26.000Z</lastmod>
-    <data>
-        <display>
-        <title>上传头像插件</title>
-        <pubTime>2017-01-18T09:18:47.000Z</pubTime>
-        
-        <tag>插件</tag>
+        <tag>jQuery插件</tag>
          
          
            
@@ -208,6 +174,40 @@
 
     
   <url>
+    <loc>https://guimeisang.github.io/2017/03/28/201703%E5%89%8D%E7%AB%AF%E5%92%8CUI%E5%90%88%E4%BD%9C%E8%A7%84%E8%8C%83%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/</loc>
+    <lastmod>2017-08-05T09:11:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>201703前端和UI合作规范的一些想法</title>
+        <pubTime>2017-03-28T04:49:58.000Z</pubTime>
+        
+        <tag>前端和UI合作规范</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://guimeisang.github.io/2017/01/02/reviewAndPlan/</loc>
+    <lastmod>2017-08-05T09:11:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>reviewAndPlan</title>
+        <pubTime>2017-01-02T02:00:38.000Z</pubTime>
+        
+        <tag>2017自白</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://guimeisang.github.io/2016/12/16/%E4%B8%80%E7%A7%8D%E9%9C%80%E8%A6%81%E8%BF%94%E5%9B%9EID%E7%9A%84%E4%B8%8B%E6%8B%89%E6%A1%86%E6%8F%92%E4%BB%B6/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
@@ -225,14 +225,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/04/20/%E4%BC%98%E9%9B%85%E5%AE%9E%E7%8E%B0ueditor%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%C2%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6event/</loc>
+    <loc>https://guimeisang.github.io/2017/01/18/%E4%B8%8A%E4%BC%A0%E5%A4%B4%E5%83%8F%E6%8F%92%E4%BB%B6/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>优雅实现ueditor二次开发·自定义事件event</title>
-        <pubTime>2017-04-20T04:44:21.000Z</pubTime>
+        <title>上传头像插件</title>
+        <pubTime>2017-01-18T09:18:47.000Z</pubTime>
         
-        <tag>ueditor二次开发 自定义事件event</tag>
+        <tag>插件</tag>
          
          
            
@@ -259,14 +259,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/03/28/201703%E5%89%8D%E5%90%8E%E7%AB%AF/</loc>
+    <loc>https://guimeisang.github.io/2017/04/20/%E4%BC%98%E9%9B%85%E5%AE%9E%E7%8E%B0ueditor%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%C2%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6event/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>201703前后端</title>
-        <pubTime>2017-03-28T04:46:38.000Z</pubTime>
+        <title>优雅实现ueditor二次开发·自定义事件event</title>
+        <pubTime>2017-04-20T04:44:21.000Z</pubTime>
         
-        <tag>前后端分离问题总结</tag>
+        <tag>ueditor二次开发 自定义事件event</tag>
          
          
            
@@ -276,14 +276,14 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/03/28/201703%E5%89%8D%E7%AB%AF%E5%92%8CUI%E5%90%88%E4%BD%9C%E8%A7%84%E8%8C%83%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/</loc>
+    <loc>https://guimeisang.github.io/2017/03/28/201703%E5%89%8D%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>201703前端和UI合作规范的一些想法</title>
-        <pubTime>2017-03-28T04:49:58.000Z</pubTime>
+        <title>201703前后端</title>
+        <pubTime>2017-03-28T04:46:38.000Z</pubTime>
         
-        <tag>前端和UI合作规范</tag>
+        <tag>前后端分离问题总结</tag>
          
          
            
@@ -310,14 +310,31 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/05/19/location%E5%92%8C%E5%88%86%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://guimeisang.github.io/2016/12/23/how-to-use-a-new-plugin/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>location和分环境开发</title>
-        <pubTime>2017-05-19T09:29:34.000Z</pubTime>
+        <title>how to use a new plugin</title>
+        <pubTime>2016-12-23T02:38:12.000Z</pubTime>
         
-        <tag>location 环境配置</tag>
+        <tag>editor</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://guimeisang.github.io/2017/04/08/js%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E7%9A%84%E4%BD%8D%E7%BD%AE/</loc>
+    <lastmod>2017-08-05T09:11:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>js控制滚动条的位置</title>
+        <pubTime>2017-04-08T10:08:45.000Z</pubTime>
+        
+        <tag>js小效果</tag>
          
          
            
@@ -344,14 +361,31 @@
 
     
   <url>
-    <loc>https://guimeisang.github.io/2017/04/18/printThis%E4%BD%93%E9%AA%8C/</loc>
+    <loc>https://guimeisang.github.io/2017/05/19/location%E5%92%8C%E5%88%86%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2017-08-05T09:11:26.000Z</lastmod>
     <data>
         <display>
-        <title>printThis体验</title>
-        <pubTime>2017-04-18T02:18:48.000Z</pubTime>
+        <title>location和分环境开发</title>
+        <pubTime>2017-05-19T09:29:34.000Z</pubTime>
         
-        <tag>jQuery插件</tag>
+        <tag>location 环境配置</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://guimeisang.github.io/2016/12/16/%E6%AD%A3%E5%BC%8F%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2017-08-05T09:11:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>正式开发中的版本管理</title>
+        <pubTime>2016-12-16T01:56:48.000Z</pubTime>
+        
+        <tag>git cli</tag>
          
          
            
@@ -404,23 +438,6 @@
         <title>页面dom的绑定js事件对应的代码位置</title>
         <pubTime>2017-04-08T10:09:42.000Z</pubTime>
         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://guimeisang.github.io/2016/12/16/%E6%AD%A3%E5%BC%8F%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2017-08-05T09:11:26.000Z</lastmod>
-    <data>
-        <display>
-        <title>正式开发中的版本管理</title>
-        <pubTime>2016-12-16T01:56:48.000Z</pubTime>
-        
-        <tag>git cli</tag>
-         
          
            
         </display>
